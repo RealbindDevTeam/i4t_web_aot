@@ -1,0 +1,26 @@
+.user-detail{
+    width: 80%; 
+    margin: 0 auto; 
+    max-width: 740px;
+
+    .image{
+        border-radius: 50%; 
+        width: 100px; 
+        height: 100px;
+    }
+    
+    .card-title{
+        font-size: 1.5rem;
+        color: #114b5f;
+        font-weight: 500;
+    }
+    
+    .card-waiter-msg{
+        font-size: 1rem;
+        margin-bottom: 4%;
+    }
+
+    .card-button{
+        width: 40%;
+    }
+}

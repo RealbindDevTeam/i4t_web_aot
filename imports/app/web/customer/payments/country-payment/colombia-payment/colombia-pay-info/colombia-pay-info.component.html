@@ -1,0 +1,117 @@
+<div class="order-form-1">
+    <div class="order-form-2">
+        <div class="menu-items">
+            <div class="menu-items-content">
+                <div class="content">
+                    <mat-card class="card-info">
+                        <mat-card-title>{{'PAYMENTS.COLOMBIA.PAYMENTS_DETAILS' | translate}}</mat-card-title>
+                        <mat-card-subtitle>{{'PAYMENTS.COLOMBIA.PAYMENTS_DETAILS_MSG' | translate}}</mat-card-subtitle>
+                        <mat-card-content>
+                            <div *ngFor="let pay of _payments | async">
+                                <mat-list class="payment">
+                                    <mat-list-item>
+                                        <img class="icon" *ngIf="pay.paymentMethodId === '10'" mat-list-avatar src="/images/cash-payment.png">
+                                        <img class="icon" *ngIf="pay.paymentMethodId === '20'" mat-list-avatar src="/images/credit-card-payment.png">
+                                        <img class="icon" *ngIf="pay.paymentMethodId === '30'" mat-list-avatar src="/images/debit-card-payment.png">
+                                        <img class="icon" *ngIf="pay.paymentMethodId === '40'" mat-list-avatar src="/images/payment-online.png">
+                                        <div mat-line>
+                                            <h3 class="total-pay">{{'PAYMENTS.COLOMBIA.TOTAL_TO_PAY' | translate}}: {{pay.totalToPayment}} {{_currencyCode}} - </h3>
+                                            <h3 *ngIf="pay.status === 'PAYMENT.NO_PAID'" class="no-payed">{{'PAYMENTS.COLOMBIA.NO_PAYED' | translate}}</h3>
+                                            <h3 *ngIf="pay.status === 'PAYMENT.PAID'" class="payed">{{'PAYMENTS.COLOMBIA.PAYED' | translate}}</h3>
+                                        </div>
+                                        <p mat-line>{{'PAYMENTS.COLOMBIA.TOTAL_ORDERS' | translate}}: {{pay.totalOrdersPrice}} {{_currencyCode}} - {{'PAYMENTS.COLOMBIA.TOTAL_TIP' | translate}}: {{pay.totalTip}} {{_currencyCode}}</p>
+                                    </mat-list-item>
+                                </mat-list>
+                                <mat-list class="payment-detail">
+                                    <span *ngFor="let or of pay.orders">
+                                        <span *ngFor="let order of _orders | async">
+                                            <ng-template [ngIf]="order._id === or">
+                                                <div *ngIf="(order.items.length > 0)">
+                                                    <span *ngFor="let it of order.items">
+                                                        <span *ngFor="let item of _items | async">
+                                                            <ng-template [ngIf]="item._id === it.itemId">
+                                                                <mat-list-item class="element">
+                                                                    <img mat-list-avatar style="flex-shrink: 0;width: 4rem;height: 4rem;border-radius: 0;" src="{{ getItemImage(item._id) }}">
+                                                                    <h4 mat-line>{{item.name}}</h4>
+                                                                    <div mat-line>
+                                                                        <p class="element-price">{{'PAYMENTS.COLOMBIA.PRICE' | translate}}: {{ getUnitPrice(item) }} {{_currencyCode}}</p>
+                                                                        <p class="element-quantity">{{'PAYMENTS.COLOMBIA.QUANT' | translate}} {{it.quantity}}</p>
+                                                                        <p class="element-total-price">{{'PAYMENTS.COLOMBIA.TOTAL' | translate}}: {{ getTotalPrice(item, it.quantity) }} {{_currencyCode}}</p>
+                                                                    </div>
+                                                                </mat-list-item>
+                                                                <mat-divider class="divider"></mat-divider>                                            
+                                                                <div *ngIf="(it.garnishFood.length > 0)">
+                                                                    <span *ngFor="let gar of it.garnishFood">
+                                                                        <span *ngFor="let garnish of _garnishFood | async">
+                                                                            <ng-template [ngIf]="gar === garnish._id">
+                                                                                <mat-list-item class="element">
+                                                                                    <img mat-list-avatar style="flex-shrink: 0;width: 4rem;height: 4rem;border-radius: 0;" src="/images/default_addition.png">
+                                                                                    <h4 mat-line>{{garnish.name}} ({{'PAYMENTS.COLOMBIA.GARNISH_FOOD' | translate}})</h4>
+                                                                                    <div mat-line>
+                                                                                        <p class="element-price">{{'PAYMENTS.COLOMBIA.PRICE' | translate}}: {{ getGarnisFoodUnitPrice(garnish) }} {{_currencyCode}}</p>
+                                                                                        <p class="element-quantity">{{'PAYMENTS.COLOMBIA.QUANT' | translate}} {{it.quantity}}</p>
+                                                                                        <p class="element-total-price">{{'PAYMENTS.COLOMBIA.TOTAL' | translate}}: {{ getGarnishFoodTotalPrice(garnish, it.quantity) }} {{_currencyCode}}</p>
+                                                                                    </div>
+                                                                                </mat-list-item>
+                                                                            </ng-template>
+                                                                        </span>
+                                                                        <mat-divider class="divider"></mat-divider>
+                                                                    </span>
+                                                                </div>
+                                                                <div *ngIf="(it.additions.length > 0)">
+                                                                    <span *ngFor="let ad of it.additions">
+                                                                        <span *ngFor="let addition of _additions | async">
+                                                                            <ng-template [ngIf]="ad === addition._id">
+                                                                                <mat-list-item class="element">
+                                                                                    <img mat-list-avatar style="flex-shrink: 0;width: 4rem;height: 4rem;border-radius: 0;" src="/images/default_addition.png">
+                                                                                    <h4 mat-line>{{addition.name}} ({{'PAYMENTS.COLOMBIA.ADDITION' | translate}})</h4>
+                                                                                    <div mat-line>
+                                                                                        <p class="element-price">{{'PAYMENTS.COLOMBIA.PRICE' | translate}}: {{ getAdditionUnitPrice(addition) }} {{_currencyCode}}</p>
+                                                                                        <p class="element-quantity">{{'PAYMENTS.COLOMBIA.QUANT' | translate}} {{it.quantity}}</p>
+                                                                                        <p class="element-total-price">{{'PAYMENTS.COLOMBIA.TOTAL' | translate}}: {{ getAdditionTotalPrice(addition, it.quantity) }} {{_currencyCode}}</p>
+                                                                                    </div>
+                                                                                </mat-list-item>
+                                                                            </ng-template>
+                                                                        </span>
+                                                                        <mat-divider class="divider"></mat-divider>                                                
+                                                                    </span>
+                                                                </div>
+                                                            </ng-template>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                                <div *ngIf="(order.additions.length > 0)">
+                                                    <span *ngFor="let add of order.additions">
+                                                        <span *ngFor="let addition of _additions | async">
+                                                            <ng-template [ngIf]="add.additionId === addition._id">
+                                                                <mat-list-item class="element">
+                                                                    <img mat-list-avatar style="flex-shrink: 0;width: 4rem;height: 4rem;border-radius: 0;" src="/images/default_addition.png">
+                                                                    <h4 mat-line>{{addition.name}} ({{'PAYMENTS.COLOMBIA.ADDITION' | translate}})</h4>
+                                                                    <div mat-line>
+                                                                        <p class="element-price">{{'PAYMENTS.COLOMBIA.PRICE' | translate}}: {{ getAdditionUnitPrice(addition) }} {{_currencyCode}}</p>
+                                                                        <p class="element-quantity">{{'PAYMENTS.COLOMBIA.QUANT' | translate}} {{add.quantity}}</p>
+                                                                        <p class="element-total-price">{{'PAYMENTS.COLOMBIA.TOTAL' | translate}}: {{add.paymentAddition}} {{_currencyCode}}</p>
+                                                                    </div>
+                                                                </mat-list-item>
+                                                            </ng-template>
+                                                        </span>
+                                                        <mat-divider class="divider"></mat-divider>                                                                                
+                                                    </span>
+                                                </div>
+                                            </ng-template>
+                                        </span>
+                                    </span>
+                                </mat-list>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="fixed-action-btn">
+                    <button id="fb" mat-fab (click)="returnToPaymentsComponent()">
+                        <mat-icon class="color-button-icon">keyboard_arrow_left</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

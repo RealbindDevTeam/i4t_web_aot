@@ -1,0 +1,133 @@
+<div class="order-form-1">
+    <div class="order-form-2">
+        <div class="menu-items">
+            <div class="menu-items-content">
+                <div class="content">
+                    <div>
+                        <mat-card *ngIf="!_showPayments" mat-cell="12" class="demo-card demo-basic" style="width: 90%; margin: 0 auto">
+                            <mat-card-content>
+                                <div class="card_initial">
+                                    <div class="card_initial has-image">
+                                        <div class="card_initial-image-container">
+                                            <img class="card_initial-image" src="/images/payments-history.png" />
+                                        </div>
+                                        <div class="card_initial-copy">
+                                            <div class="card_initial-tagline">
+                                                {{'PAYMENTS_HISTORY.NO_PAYS' | translate}}
+                                            </div>
+                                            <div class="card_initial-additional-links">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                        
+                        <div *ngIf="_showPayments" id="pruebaCard" >
+                            <mat-card class="main" *ngFor="let invoice of _invoices | async">
+                                <mat-card-content>
+                                    <mat-list class="order-info">
+                                        <mat-list-item>
+                                            <img mat-list-avatar class="image" src="/images/orders.png">
+                                            <h2 mat-line class="title">{{invoice.restaurant_name}}</h2>
+                                            <p mat-line class="title">{{invoice.creation_date | date: 'dd MMM yyyy HH:mm'}}</p>
+                                            <button mat-raised-button *ngIf="isInvoiceCanDownload(invoice, invoice.country_id)" (click)="invoiceGenerate(invoice, invoice.country_id)" style="box-shadow: none; color: #ef5350;" matTooltip="{{'PAYMENTS_HISTORY.TOOLTIP_DOWNLOAD_INVOICE' | translate}}">
+                                                <mat-icon>get_app</mat-icon>
+                                            </button>
+                                        </mat-list-item>
+                                    </mat-list>
+                                    <mat-list class="order-details">
+                                        <div *ngFor="let item of invoice.items">
+                                            <mat-list-item class="element">
+                                                <div mat-line>
+                                                    <div class="item-name">
+                                                        <h4 class="display-inline">{{itemNameCrop(item.item_name)}}</h4>
+                                                    </div>
+                                                    <div class="item-price-quantity">
+                                                        <p class="quantity">{{'PAYMENTS.COLOMBIA.QUANT' | translate}} {{item.quantity}}</p>
+                                                        <p class="price">{{item.price}} {{invoice.currency}}</p>
+                                                    </div>
+                                                </div>
+                                            </mat-list-item>
+                                            <mat-divider class="divider"></mat-divider>
+                                            <div *ngIf="item.garnish_food.length > 0">
+                                                <mat-list-item class="element" *ngFor="let gf of item.garnish_food">
+                                                    <div mat-line>
+                                                        <div class="item-name">
+                                                            <h4 class="display-inline">{{itemNameCrop(gf.garnish_food_name)}}</h4>
+                                                        </div>
+                                                        <div class="item-price-quantity">
+                                                            <p class="quantity">{{'PAYMENTS.COLOMBIA.QUANT' | translate}} {{item.quantity}}</p>
+                                                            <p class="price">{{gf.price}} {{invoice.currency}}</p>
+                                                        </div>
+                                                    </div>
+                                                </mat-list-item>
+                                                <mat-divider class="divider"></mat-divider>
+                                            </div>
+                                            
+                                            <div *ngIf="item.additions.length > 0">
+                                                <mat-list-item class="element" *ngFor="let ad of item.additions">
+                                                    <div mat-line>
+                                                        <div class="item-name">
+                                                            <h4 class="display-inline">{{itemNameCrop(ad.addition_name)}}</h4>
+                                                        </div>
+                                                        <div class="item-price-quantity">
+                                                            <p class="quantity">{{'PAYMENTS.COLOMBIA.QUANT' | translate}} {{item.quantity}}</p>
+                                                            <p class="price">{{ad.price}} {{invoice.currency}}</p>
+                                                        </div>
+                                                    </div>
+                                                </mat-list-item>
+                                                <mat-divider class="divider"></mat-divider>
+                                            </div>
+                                        </div>
+
+                                        <div *ngFor="let addition of invoice.additions">
+                                            <mat-list-item class="element">
+                                                <div mat-line>
+                                                    <div class="item-name">
+                                                        <h4 class="display-inline">{{itemNameCrop(addition.addition_name)}}</h4>
+                                                    </div>
+                                                    <div class="item-price-quantity">
+                                                        <p class="quantity">{{'PAYMENTS.COLOMBIA.QUANT' | translate}} {{addition.quantity}}</p>
+                                                        <p class="price">{{addition.price}} {{invoice.currency}}</p>
+                                                    </div>
+                                                </div>
+                                            </mat-list-item>
+                                            <mat-divider class="divider"></mat-divider>
+                                        </div>
+                                    </mat-list>
+                                    
+                                    <div style="padding: 0 16px;">
+                                        <div>
+                                            <div style="display: -webkit-inline-box; width: 100%;">
+                                                <img *ngIf="invoice.pay_method == 'PAYMENT_METHODS.CASH'" class="img-cards" src="images/cash-payment.png">
+                                                <img *ngIf="invoice.pay_method == 'PAYMENT_METHODS.CREDIT_CARD'" class="img-cards" src="images/credit-card-payment.png">
+                                                <img *ngIf="invoice.pay_method == 'PAYMENT_METHODS.DEBIT_CARD'" class="img-cards" src="images/debit-card-payment.png">
+                                                <img *ngIf="invoice.pay_method == 'PAYMENT_METHODS.ONLINE'" class="img-cards" src="images/img/payment-online.png">
+                                                <p style="line-height: inherit">
+                                                    {{invoice.pay_method | translate}}
+                                                </p>
+                                            </div>
+                                            <div style="display: inline-block; width: 100%;">
+                                                <h4 style="display: inline-block;">{{ 'PAYMENTS_HISTORY.TOTAL_ORDERS' | translate }}</h4>
+                                                <p style="float: right;">{{invoice.total_order}} {{invoice.currency}}</p>
+                                            </div>
+                                            <div style="display: inline-block; width: 100%;">
+                                                <h4 style="display: inline-block;">{{ 'PAYMENTS_HISTORY.TIP' | translate }}</h4>
+                                                <p style="float: right;">{{invoice.total_tip}} {{invoice.currency}}</p>
+                                            </div>
+                                        </div>
+                                        <div style="display: inline-block; width: 100%;">
+                                            <h1 style="display: inline-block;">{{ 'PAYMENTS_HISTORY.TOTAL' | translate }}</h1>
+                                            <h1 style="float: right;">{{invoice.total_pay}} {{invoice.currency}}</h1>
+                                        </div>
+                                    </div>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

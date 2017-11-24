@@ -1,0 +1,118 @@
+.order {
+    background-color: #114B5F;
+    color: white;
+    margin-bottom: 1%;
+}
+
+.order-code {
+    margin-right: 1rem;
+}
+
+.confirm-button {
+    margin-left: 5%;
+    color: black;
+}
+
+.order-icon {
+    margin-right: 1%;
+}
+
+.fixed-action-btn {		
+    position: relative;
+
+    button {
+        position: absolute;
+        bottom: 30px;
+        right: 35px;
+        width: 56px;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+ }
+
+.main-card{
+    .image{
+        border-radius: 50%; 
+        width: 100px; 
+        height: 100px;
+    }
+
+    .title{
+        font-size: 1.5rem;
+        color: #114b5f;
+        font-weight: 500;
+    }
+
+    .subtitle{
+        font-size: 1rem;
+    }
+
+    .button{
+        width: 40%;
+    }
+}
+
+.order-form-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    .order-form-2 {
+        position: relative;
+        overflow: hidden;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        
+        .menu-items {
+            position: relative;
+            -webkit-flex: 1 1 auto;
+            flex: 1 1 auto;
+            height: 100%;
+
+                .menu-items-content {
+                    height: 100%;
+                    width: 100%;
+                    top: 0;
+                    -webkit-flex-direction: row;
+                    flex-direction: row;
+                    display: -webkit-box;
+                    display: -moz-box;
+                    display: -ms-flexbox;
+                    display: -webkit-flex;
+                    display: flex;
+                    
+                    .content {
+                        overflow: scroll;
+                        margin-top: 20px;
+                        margin-left: 20px;
+                        display: -webkit-box;
+                        display: -moz-box;
+                        display: -ms-flexbox;
+                        display: -webkit-flex;
+                        display: flex;
+                        height: calc( 100vh - 90px);
+                        width: 100%;
+                        -webkit-flex-direction: column;
+                        flex-direction: column;
+                        overflow-x: hidden;
+                        overflow-y: auto;
+                        -webkit-flex: 1 1 auto;
+                        flex: 1 1 auto;
+
+                        .payment-info {
+                            width: 55%;
+                            margin: 0 auto;
+                        }
+
+                    }
+            }
+        }
+    }
+}

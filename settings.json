@@ -1,0 +1,25 @@
+{
+    "oneSignal": {
+        "apiKey": "ZWE4MTM3ZjMtOTk5Ni00ZmExLWFhZWEtMjAyNThjMjk1YmUw",
+        "appId": "d0d0fcd1-ed5a-4f7c-84e2-271fe9a553aa"
+    },
+    "facebook": {
+        "appId": "128565331134597",
+        "secret": "4df3e77e25eb20be5cf4554352c520cf"
+    },
+    "public": {
+        "facebook": {
+            "permissions": [
+                "basic_info",
+                "user_interests",
+                "user_activities",
+                "read_friendlists"
+            ],
+            "profileFields": [
+                "name",
+                "gender",
+                "location"
+            ]
+        }
+    }
+}

@@ -1,0 +1,189 @@
+.block{
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: 0;
+    font-weight: normal;
+    line-height: normal;
+    text-align: initial;
+    text-decoration: none;
+    color: inherit;
+}
+
+.item-inner {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-flex-direction: inherit;
+    -ms-flex-direction: inherit;
+    flex-direction: inherit;
+    -webkit-align-items: inherit;
+    -ms-flex-align: inherit;
+    align-items: inherit;
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    margin: 0;
+    padding: 0;
+    min-height: inherit;
+    border: 0;
+}
+
+.input{
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-flex-direction: inherit;
+    -ms-flex-direction: inherit;
+    flex-direction: inherit;
+    -webkit-align-items: inherit;
+    -ms-flex-align: inherit;
+    align-items: inherit;
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    text-overflow: ellipsis;
+}
+
+.label{
+    display: block;
+    overflow: hidden;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin: 0;
+    font-size: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    
+}
+
+.main{
+    //width: 55%;
+    //margin: 0 auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    .image{
+        border-radius: 50%; 
+        width: 100px; 
+        height: 100px;
+    }
+
+    .card-title{
+        font-size: 1.5rem;
+        color: #114b5f;
+        font-weight: 500;
+    }
+
+    .card-subtitle{
+        font-size: 1rem;
+    }
+
+    .card-button{
+        width: 50%;
+    }
+
+    .card-waiter-msg{
+        font-size: 1rem;
+        margin-bottom: 4%;
+    }
+
+    .card-pay{
+        color: darkgoldenrod;
+        font-weight: bold;
+        font-size: larger;
+    }
+
+    .show-alert{
+        position: absolute;
+        right: 10px;
+        top: 55px;
+
+        .confirm{
+            color: red;
+        }
+
+        .pending-confirm{
+            color: darkgoldenrod
+        }
+    }
+
+    .payment-info{
+    
+        .tipValue{
+            display: inline-block;
+            width: 50%;
+        }
+
+        .tipTotal{
+            font-size: 1.17em;
+            font-weight: bold;
+            color: black;
+            display: inline-block;
+            width: 49%;
+            text-align: right;
+        }
+
+        .otherTip-content{
+            width: 49%;
+            display: inline-block;
+            text-align: right;
+
+            .otherTip{
+                width: 40%;
+            }
+        }
+
+        .payment-method{
+            margin-top: 2%;
+        }
+
+        .pay-button{
+            width: 35%;
+        }
+
+        .waiter-message{
+            font-weight: bold;
+            color: red;
+        }
+    }
+}
+
+.mc {
+    position: relative;
+    height: 100%;
+    overflow: scroll;
+}
+
+.mmp{
+    margin: 20px;
+    padding: 17px 20px 0;
+}
+
+.mw{
+    margin: 0 auto;
+    width: 55%;
+}

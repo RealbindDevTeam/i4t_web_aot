@@ -1,0 +1,87 @@
+.main-info{
+    text-align: center;
+
+    .customer-info{
+        font-family: Roboto,'Helvetica Neue',sans-serif;
+        display: inline-block;
+        font-weight: bold;
+    }
+    .exit-button{
+        margin-left: 1rem;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .order-cancel-error{
+        font-family: Roboto,'Helvetica Neue',sans-serif;
+        margin: 0;
+        color: red;
+        font-weight: bold;
+    }
+}
+
+.order{
+    .order-info{
+        .order-status{
+            width: 70%;
+            display: inline-block;
+            text-align: center
+        }
+
+        .cancel-order-button{
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    .name{
+        margin-bottom: 0%;
+    }
+
+    .observations{
+        margin-bottom: 0%;
+    }
+
+    .no-garnish{
+        display: inline-block;
+        color: green;
+        font-weight: bold;
+        margin-bottom: 0%;
+    }
+
+    .garnish-food{
+        .garnish-title{
+            display: inline-block;
+            color: green;
+            font-weight: bold;
+            margin-bottom: 0%
+        }
+
+        .garnish-name{
+            display: inline-block;
+            color: green;
+            font-weight: bold;
+            margin-bottom: 0%;
+        }
+    }
+
+    .no-addition{
+        display: inline-block;
+        color: darkgoldenrod;
+        font-weight: bold;
+    }
+
+    .addition{
+        .addition-title{
+            display: inline-block;
+            color: darkgoldenrod;
+            font-weight: bold;
+        }
+
+        .addition-name{
+            display: inline-block;
+            color: darkgoldenrod;
+            font-weight: bold;
+        }
+    }
+}

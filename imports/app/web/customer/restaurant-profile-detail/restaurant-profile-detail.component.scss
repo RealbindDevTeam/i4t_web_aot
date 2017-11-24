@@ -1,0 +1,109 @@
+agm-map {
+    height: 300px;
+}
+
+.main {
+    width: 80%; 
+    margin: 0 auto;
+
+    .restaurant-info {
+        .img {
+            border-radius: 50%; 
+            width: 100px; 
+            height: 100px;
+        }
+        .name {
+            font-size: 1.3rem;
+        }
+
+        .location {
+            font-size: 1rem;
+
+            .location-icon {
+                vertical-align: middle;
+                color: #EF5350
+            }
+        }
+
+        .menu-button {
+            width: 25%;
+        }
+    }
+
+    .no-restaurant-info {
+        margin: 0 auto;
+    }
+
+    .about-photos-panel{
+        width: 50%;
+        display: inline-block;
+
+        .about {
+            height: 182px;
+            overflow: scroll;
+            word-wrap: break-word;
+        }
+
+        .photos {
+            height: 150px;
+
+            .img-thumb {
+                margin-right: 1%;
+            }
+        }
+    }
+
+    .contact-payments-panel {
+        width: 47%;
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 2.4%;
+
+        .contact {
+            height: 182px;
+
+            .font-info {
+                font-size: 1rem;
+            }
+
+            .icon {
+                vertical-align: middle;
+                color: #EF5350
+            }
+
+            .schedule-social-networks {
+                text-align: -webkit-center; 
+                color: #EF5350;
+                
+                .social-networks{
+                    display: inline;
+                }
+            }
+        }
+
+        .payment-methods {
+            height: 150px;
+
+            .all-payments {
+                text-align: center;
+
+                .payment-meth {
+                    display: inline-block;
+
+                    .payment-info {
+                        font-size: 1rem;
+
+                        .payment-thumb {
+                            width: 40px; 
+                            height: 40px;
+                        }
+
+                        .payment-name {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

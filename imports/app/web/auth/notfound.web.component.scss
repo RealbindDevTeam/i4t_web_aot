@@ -1,0 +1,91 @@
+$primary-color: #EF5350;
+$font-color: #3c4146;
+
+.background {
+    position: absolute;
+    background-color: whitesmoke;
+    width: 100%;
+    height: 100%;
+}
+
+.not-found {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    margin: 5em auto 0em;
+    padding: 4em 3em 4em 3em;
+    background: #fff;
+    border-radius: 5px;
+    width: 55%;
+}
+
+@media (max-width: 1280px) {
+    .not-found {
+        width: 62%;
+    }
+}
+
+@media (max-width: 1366px) {
+    .not-found {
+        width: 60%;
+    }
+}
+
+.notfound-top {
+    float: left;
+    width: 35%;
+    text-align: right;
+    padding: 0em 4em 0em 0em;
+}
+
+mat-icon {
+    font-size: 4.5em;
+    color:$primary-color;
+}
+
+.notfound-top h1 {
+    font-size: 9.5em;
+    color: $font-color;
+    -webkit-margin-before: .2em;
+    -webkit-margin-after: .2em;
+}
+
+.content {
+    float: right;
+    width: 50%;
+    padding-left: 3em;
+    border-left: 3px solid $font-color;
+}
+
+.content h2 {
+    color: $font-color;
+    font-size: 1.5em;
+}
+
+
+.social-icons a {
+    display: inline-block;
+    color: #fff;
+    font-family: socicon;
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    background: url("/images/social-icons.png");
+    transition: background .3s;
+}
+
+.social-icons .facebook {
+  background-position: 0 0;
+}
+
+.social-icons .twitter {
+  background-position: -40px 0;
+}
+
+.social-icons .google {
+  background-position: -80px 0;
+}
+
+.clear {
+    clear: both;
+}

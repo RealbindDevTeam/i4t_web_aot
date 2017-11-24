@@ -1,0 +1,81 @@
+<div class="order-form-1">
+    <div class="order-form-2">
+        <div class="menu-items">
+            <div class="menu-items-content">
+                <div class="content">
+                    <mat-card mat-cell="12" class="demo-card demo-basic payment-info" *ngIf="!_showPaymentInfo">
+                        <mat-card-content>
+                            <div class="card_initial">
+                                <div class="card_initial has-image">
+                                <div class="card_initial-image-container">
+                                    <img class="card_initial-image" src="/images/payment-desabled.png"/>
+                                </div>
+                                <div class="card_initial-copy">
+                                    <div class="card_initial-tagline">
+                                    {{'PAYMENTS.THERE_IS_NOT_REST' | translate}}
+                                    </div>
+                                    <div class="card_initial-additional-links">
+                                    {{'PAYMENTS.THERE_IS_NOT_REST_MSG' | translate}}
+                                    </div>
+                                </div>
+                                <div class="card_initial-button">
+                                    <button mat-raised-button (click)="goToOrders()">{{'PAYMENTS.GO_TO_ORDERS' | translate}}</button>
+                                </div>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+
+                    <div class="payment-info" *ngIf="_showPaymentInfo">
+                        <mat-card class="main-card">
+                            <mat-list>
+                                <mat-list-item>
+                                    <img mat-list-avatar class="image" src="/images/orders.png">
+                                    <h2 mat-line class="title">{{'ORDER_PAYMENT_TRANS.CONSULT_TABLE_ORDERS_TITLE' | translate}}</h2>
+                                    <p mat-line class="subtitle">{{'ORDER_PAYMENT_TRANS.CONSULT_TABLE_ORDERS_SUBTITLE_1' | translate}}</p>
+                                    <p mat-line class="subtitle">{{'ORDER_PAYMENT_TRANS.CONSULT_TABLE_ORDERS_SUBTITLE_2' | translate}}</p>
+                                    <button mat-raised-button class="primary-button button" (click)="open()">{{'ORDER_PAYMENT_TRANS.CONSULT_TABLE_ORDERS' | translate}}</button>
+                                </mat-list-item>
+                            </mat-list>
+                        </mat-card>
+
+                        <mat-card>
+                            <mat-card-title> {{'ORDER_PAYMENT_TRANS.ORDERS_TO_CONFIRM_TITLE' | translate}}</mat-card-title>
+                            <mat-card-subtitle>{{'ORDER_PAYMENT_TRANS.ORDER_TO_CONFIRM' | translate}}</mat-card-subtitle>
+                            <p *ngIf="(_ordersToConfirm | async)?.length <= 0">{{'ORDER_PAYMENT_TRANS.NO_ORDERS' | translate}}</p>
+                            <div *ngFor="let orderCon of _ordersToConfirm | async">
+                                <mat-toolbar class="order">
+                                    <i class="fa fa-list-alt" aria-hidden="true" class="order-icon"></i>
+                                    <span class="order-code">{{'ORDER_PAYMENT_TRANS.ORDERS' | translate}} # {{orderCon.code}}</span>
+                                    <span>{{'ORDER_PAYMENT_TRANS.TOTAL' | translate}}: {{orderCon.totalPayment}} {{_currencyCode}}</span>
+                                    <span class="app-flex-filler"></span>
+                                    <button mat-raised-button class="confirm-button" (click)="confirmOrderToPay(orderCon)">{{'ORDER_PAYMENT_TRANS.CONFIRM' | translate}}</button>
+                                </mat-toolbar>
+                            </div>
+                        </mat-card>
+                        
+                        <mat-card>
+                            <mat-card-title>{{'ORDER_PAYMENT_TRANS.ORDERS_TO_PAY_TITLE' | translate}}</mat-card-title>        
+                            <mat-card-subtitle>{{'ORDER_PAYMENT_TRANS.PENDING_ORDERS' | translate}}</mat-card-subtitle>
+                            <p *ngIf="(_ordersWithPendingConfirmation | async)?.length <= 0">{{'ORDER_PAYMENT_TRANS.NO_ORDERS' | translate}}</p>  
+                            <div *ngFor="let orderPenCon of _ordersWithPendingConfirmation | async">
+                                <mat-toolbar class="order">
+                                    <i class="fa fa-list-alt" aria-hidden="true" class="order-icon"></i>
+                                    <span class="order-code">{{'ORDER_PAYMENT_TRANS.ORDERS' | translate}} # {{orderPenCon.code}}</span>
+                                    <span class="app-flex-filler"></span>
+                                    <span class="order-status">{{orderPenCon.status | translate}}</span>
+                                </mat-toolbar>
+                            </div>
+                        </mat-card>
+                    </div>
+                </div>
+                
+                <div class="fixed-action-btn">
+                    <button id="fb" mat-fab (click)="returnToPaymentsComponent()">
+                        <mat-icon class="color-button-icon">keyboard_arrow_left</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

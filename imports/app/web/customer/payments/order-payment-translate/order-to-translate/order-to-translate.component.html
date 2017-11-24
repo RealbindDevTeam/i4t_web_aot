@@ -1,0 +1,66 @@
+<div *ngFor="let or of _ordersTable | async; let in = index">
+    <mat-toolbar class="other-order" (click)="showOthersOrderDetail(or,in)">
+        <img style="width: 3rem;" src="/images/my-orders.png">
+        <span class="order-code">{{'ORDER_TRANS.ORDERS' | translate}} # {{or.code}}</span>
+        <span>{{'ORDER_TRANS.TOTAL' | translate}}: {{or.totalPayment}} {{_currencyCode}}</span>
+        <span class="app-flex-filler"></span>
+        <span class="order-status">{{'ORDER_TRANS.STATUS' | translate}}: {{or.status | translate}}</span>
+        <button mat-raised-button class="primary-button pay-button" (click)="markOrderToPay(or)">{{'ORDER_TRANS.PAY' | translate}}</button>
+    </mat-toolbar>
+    <mat-card *ngIf="_orderOthersIndex == in">
+        <mat-card-content>
+            <mat-list *ngIf="(or.items.length > 0)">
+                <span *ngFor="let item of _items | async">
+                    <span *ngFor="let it of or.items">
+                        <ng-template [ngIf]="item._id === it.itemId">
+                            <mat-list-item>
+                                <img mat-list-avatar style="flex-shrink: 0;width: 4rem;height: 4rem;border-radius: 0;" src="{{ getItemImage(item._id) }}">
+                                <h4 mat-line>{{item.name}}</h4>
+                                <h5 mat-line>
+                                    {{'ORDER_TRANS.PRICE' | translate}}: {{it.paymentItem}} {{_currencyCode}} - {{'ORDER_TRANS.QUANT' | translate}} {{it.quantity}}
+                                    <div *ngIf="it.garnishFood.length > 0" class="order-item-garnishFood"> - {{'ORDER_TRANS.GARNISH_FOOD' | translate}}: {{it.garnishFood.length}}</div>
+                                    <div *ngIf="it.additions.length > 0" class="order-item-additions"> - {{'ORDER_TRANS.ADDITIONS' | translate}}: {{it.additions.length}}</div>
+                                </h5>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                        </ng-template>
+                    </span>
+                </span>
+            </mat-list>
+            <mat-list *ngIf="(or.additions.length > 0)">
+                <span *ngFor="let addition of _additions | async">
+                    <span *ngFor="let ad of or.additions">
+                        <ng-template [ngIf]="addition._id === ad.additionId">
+                            <mat-list-item>
+                                <img mat-list-avatar style="flex-shrink: 0;width: 4rem;height: 4rem;border-radius: 0;" src="/images/default-plate.png">
+                                <h4 mat-line>{{addition.name}} <div class="addition-message">({{'ORDER_TRANS.ADDITION' | translate}})</div></h4>
+                                <p mat-line>{{'ORDER_TRANS.PRICE' | translate}}: {{ad.paymentAddition}} {{_currencyCode}} - {{'ORDER_TRANS.QUANT' | translate}} {{ad.quantity}}</p>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                        </ng-template>
+                    </span>
+                </span>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+    <button style="margin-top: 1rem;" mat-raised-button (click)="close()">{{'CLOSE' | translate}}</button>
+</div>
+<mat-card mat-cell="12" class="demo-card demo-basic payment-info" *ngIf="(_ordersTable | async)?.length <= 0">
+    <mat-card-content>
+        <div class="card_initial">
+            <div class="card_initial has-image">
+            <div class="card_initial-image-container">
+                <img class="card_initial-image" src="/images/tables.png"/>
+            </div>
+            <div class="card_initial-copy">
+                <div class="card_initial-tagline">
+                    {{'ORDER_TRANS.NO_ORDERS' | translate}}
+                </div>
+            </div>
+            <div class="card_initial-button">
+                <button mat-raised-button (click)="close()">{{'CLOSE' | translate}}</button>
+            </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

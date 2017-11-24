@@ -1,0 +1,544 @@
+@import "../../../public/scss/_variables.scss";
+@import "../../../public/scss/_colors.scss";
+@import "../../../public/scss/_flex.scss";
+@import "../../../public/scss/_navigation.scss";
+@import "../../../public/scss/_typography.scss";
+@import "../../../public/scss/_cards.scss";
+@import "../../../public/scss/_tables.scss";
+
+/***************
+  HTML Styles
+***************/
+html, body {
+    height: 100%;
+    margin: 0;
+}
+main > .container {
+  margin: 20px auto;
+}
+
+p.box {
+  padding: 20px;
+}
+p {
+  color: rgba(0, 0, 0, 0.71);
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  -webkit-font-smoothing: antialiased;
+}
+
+h5 > span {
+  font-size: 14px;
+  margin-left: 15px;
+  color: #777;
+}
+
+/************
+Styles body web and mobile
+***********/
+body.mobile {
+  overflow: hidden;
+}
+
+body.web {
+  font-family: Roboto, "Helvetica Neue", sans-serif;  
+  overflow: visible;
+  position: initial;
+}
+
+th {
+    height: 30px;
+}
+
+/*****************************
+  Overwrite Components Style
+******************************/
+/*
+  Card
+*/
+mat-card-title {
+    color: $button-color-secundary;
+}
+
+/*
+  CheckBox
+*/
+
+.mat-checkbox-checked .mat-checkbox-background {
+    background-color: $primary-color;
+}
+
+/*
+  Toolbar Component
+*/
+
+mat-toolbar {
+  background-color: $primary-color;
+  color: $white_color-text;
+}
+
+/*
+  Toggle Component
+*/
+mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: $primary-color;
+}
+
+mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: $primary-color-hover;
+}
+
+mat-slide-toggle.mat-checked .mat-slide-toggle-focused {
+    background-color: $primary-color-hover;
+}
+
+/*
+  Toggle Component Primary
+*/
+mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-thumb {
+    background-color: $primary-color;
+}
+
+mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-bar {
+    background-color: $primary-color-hover;
+}
+
+/*
+  Wizard
+*/
+
+mat-ink-bar {
+    background-color: $primary-color;
+}
+
+.mat-tab-label:focus {
+    background-color: $primary-color-hover;
+    $color-black: "0,0,0";
+    $select-background-color: transparent;
+    $select-border-color: unquote("rgba(#{$color-black}, 0.12)") !default;
+    $select-color: unquote("rgba(#{$color-black}, 0.26)") !default;
+    $select-padding: 4px;
+
+    div.selector-container {
+        width:50px;
+        margin:0px;
+        float:left;
+    }
+    div.notifications {
+        position: fixed;
+        bottom:0;
+        padding:40px;
+    }
+    div.error {
+        color: $primary-color;
+    }
+    div.divider {
+        clear:both;
+        margin:10px;
+    }
+
+    select {
+    font-family: inherit;
+    background-color: transparent;
+    width: 100%;
+    padding: $select-padding 0;
+    color: $select-color;
+    border: none;
+    border-bottom: 1px solid $select-border-color;
+    }
+
+    select:focus {
+    outline: none}
+
+    .mdl-selectfield label {display: none;}
+    .mdl-selectfield select {appearance: none}
+    .mdl-selectfield {
+        font-family: 'Roboto','Helvetica','Arial',sans-serif;
+        position: relative;
+        &:after {
+            position: absolute;
+            top: 0.75em;
+            right: 0.5em;
+            width: 0;
+            height: 0;
+            padding: 0;
+            content: '';
+            border-left: .25em solid transparent;
+            border-right: .25em solid transparent;
+            border-top: .375em solid $select-border-color;
+            pointer-events: none;
+        }
+    }
+}
+
+.error-message{
+  color: $primary-color;
+  font-size: 0.9em;
+}
+
+.primary-button {
+    background-color: $white_color-text !important;
+    border: 1px solid $primary-color !important;
+    box-shadow: none !important;
+    color: $primary-color !important;
+    font-weight: 600 !important;
+}
+.primary-button:hover {
+    color: $white_color-text !important;
+    background-color: $primary-color !important;
+}
+
+.secondary-button {
+    background-color: $button-secondary !important;
+    box-shadow: none !important;
+    color: $button-color-secundary !important;
+}
+
+.secondary-button:hover {
+    background-color: $button-secondary-hover !important;
+}
+
+.inactive-button{
+    background-color: $white_color-text !important;
+    border: 1px solid $primary-color !important;
+    box-shadow: none !important;
+    color: $primary-color !important;
+    font-weight: 600 !important;
+}
+
+.inactive-button:hover {
+    color: $white_color-text !important;
+    background-color: $primary-color !important;
+}
+
+.active-button{
+    background-color: $white_color-text !important;
+    border: 1px solid #8BC34A !important;
+    box-shadow: none !important;
+    color: #8BC34A !important;
+    font-weight: 600 !important;
+}
+
+.active-button:hover {
+    color: $white_color-text !important;
+    background-color: #8BC34A !important;
+}
+
+/*
+  Input File
+*/
+
+.js .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    max-width: 80%;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+}
+
+.no-js .inputfile + label {
+    display: none;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
+}
+
+
+.inputfile-1 + label {
+    border: 1px solid $primary-color !important;
+    color: $primary-color;
+    background-color: $white_color-text;
+    vertical-align: middle;
+    font-size: smaller;
+}
+
+.inputfile-1:focus + label,
+.inputfile-1.has-focus + label,
+.inputfile-1 + label:hover {
+    background-color: $primary-color;
+    color: $white_color-text;
+}
+
+/*
+    Add and revome buttons
+*/
+.quantity-button {
+    background-color: White !important;
+    border: 1px solid #EF5350 !important;
+    color: #EF5350 !important;
+    min-height: 30px !important;
+    min-width: 65px !important;
+    font-size: 20px !important;
+    line-height: 0px;
+}
+
+/*
+    Label
+*/
+
+.label-field-void {
+    color: #cacaca;
+    font-size: 12px;
+}
+
+/*
+    //Card initial
+*/
+
+
+.card_initial {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    position: relative;
+    margin: 96px auto;
+    min-height: 144px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+
+.card_initial.has-image {
+    padding-left: 184px;
+    width: 576px;
+}
+
+.card_initial .card_initial-image-container {
+    width: 144px;
+    height: 144px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.card_initial .card_initial-image {
+    width: 192px;
+    height: 192px;
+    position: absolute;
+    left: -24px;
+    top: -24px;
+}
+
+.card_initial .card_initial-copy {
+    -webkit-align-self: stretch;
+    align-self: stretch;
+}
+
+@media only screen and (max-width: 600px){
+    .card_initial {
+        width: 100%;
+        height: 128px;
+        margin-bottom: 12px;
+    }
+
+
+    .card_initial.has-image {
+        padding: 0;
+        margin: 0 auto;
+        width: 256px;
+    }
+
+    .card_initial .card_initial-image-container {
+        position: relative;
+        width: 100%;
+        height: 128px;
+        margin-bottom: 12px;
+    }
+
+    .card_initial .card_initial-image {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        display: block;
+        margin: 0 auto;
+        left: 0;
+        top: 0;
+    }
+
+    .card_initial .card_initial-copy {
+        text-align: center;
+        margin-bottom: 12px;
+    }
+}
+
+.card_initial .card_initial-tagline {
+    color: rgba(0,0,0,0.87);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.card_initial .card_initial-button {
+    margin-top: 20px;
+}
+
+/*
+    Loading
+*/
+
+.global-div {
+    position: absolute;
+    //width: calc( 100% - 48px);
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0;
+    width: 100%;
+}
+
+.div-whitout-overflow {
+    position: relative;
+    overflow: hidden;
+}
+
+.cards-div {
+    position: relative; 
+    overflow: scroll;
+    height: calc( 100vh - 90px);
+    width: 100%;
+}
+
+/* Absolute Center Spinner */
+.loading {
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 2rem;
+  width: 2rem;
+  z-index: 999;
+}
+
+/* Transparent Overlay */
+.loading:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.mat-tooltip {
+    font-size: $tooltip-fontsize-sm !important;
+}
+
+/* Custom cards */
+
+.custom-cards {
+    display: inline-block !important; 
+    margin-right: 20px;
+    width: 260px !important;
+    vertical-align: top !important;
+
+    .header-card {
+        text-align: -webkit-center;
+
+        img {
+            width: 160px; 
+            height: 160px; 
+            border-radius: 50%; 
+            margin-bottom: 16px;
+        }
+
+        .btn-position-edition{
+            position: absolute;
+            top: 120px;
+            right: 60px;
+        }
+    }
+}
+
+.list {
+    list-style-type:none;
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+.vertical-align-middle {
+    vertical-align: middle !important;
+}
+
+.mat-dialog-container {
+    max-height: 80vh !important;
+    max-width:   60vw !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .mat-checkbox-layout {
+        white-space: normal !important;
+        text-align: left !important;
+    }
+
+    .mat-dialog-container {
+        max-height: 100vh !important;
+        max-width:   90vw !important;
+    }
+
+    mat-card-actions.mobile {
+        -webkit-align-items: center;
+        align-items: center;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-flex: 0 0 auto;
+        -webkit-flex: 0 0 auto;
+        flex: 0 0 auto;
+        -webkit-flex-wrap: wrap-reverse;
+        flex-wrap: wrap-reverse;
+        -webkit-justify-content: flex-end;
+        justify-content: flex-end;
+    }
+}
