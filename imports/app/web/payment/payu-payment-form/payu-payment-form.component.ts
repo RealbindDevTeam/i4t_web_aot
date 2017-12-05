@@ -27,7 +27,7 @@ import { Restaurant } from '../../../../both/models/restaurant/restaurant.model'
 import { Restaurants } from '../../../../both/collections/restaurant/restaurant.collection';
 import { Table } from '../../../../both/models/restaurant/table.model';
 import { Tables } from '../../../../both/collections/restaurant/table.collection';
-import { CcRequestColombia, Merchant, Transaction, Order, Payer, TX_VALUE, TX_TAX, TX_TAX_RETURN_BASE, CreditCard, ExtraParameters, AdditionalValues, Buyer, ShippingBillingAddress } from '../../../../../../both/models/payment/cc-request-colombia.model';
+import { CcRequestColombia, Merchant, Transaction, Order, Payer, TX_VALUE, TX_TAX, TX_TAX_RETURN_BASE, CreditCard, ExtraParameters, AdditionalValues, Buyer, ShippingBillingAddress } from '../../../../both/models/payment/cc-request-colombia.model';
 import { AlertConfirmComponent } from '../../../web/general/alert-confirm/alert-confirm.component';
 import { UserDetail } from '../../../../both/models/auth/user-detail.model';
 import { UserDetails } from '../../../../both/collections/auth/user-detail.collection';

@@ -17,7 +17,7 @@ import { Countries } from '../../../../../both/collections/settings/country.coll
 import { Country } from '../../../../../both/models/settings/country.model';
 import { City } from '../../../../../both/models/settings/city.model';
 import { Cities } from '../../../../../both/collections/settings/city.collection';
-import { uploadRestaurantImage, createRestaurantCode, generateQRCode, createTableCode } from '../../../../../../../both/methods/restaurant/restaurant.methods';
+import { uploadRestaurantImage, createRestaurantCode, generateQRCode, createTableCode } from '../../../../../both/methods/restaurant/restaurant.methods';
 import { CreateConfirmComponent } from './create-confirm/create-confirm.component';
 import { Table } from '../../../../../both/models/restaurant/table.model';
 import { Tables } from '../../../../../both/collections/restaurant/table.collection';

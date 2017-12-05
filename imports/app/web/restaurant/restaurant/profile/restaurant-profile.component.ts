@@ -8,8 +8,8 @@ import { MouseEvent } from "@agm/core";
 import { MatSnackBar, MatDialogRef, MatDialog } from '@angular/material';
 import { Meteor } from 'meteor/meteor';
 import { UserLanguageService } from '../../../../shared/services/user-language.service';
-import { Restaurant, RestaurantProfile, RestaurantImage, RestaurantSchedule, RestaurantLocation, RestaurantSocialNetwork, RestaurantProfileImageThumb } from '../../../../../../../both/models/restaurant/restaurant.model';
-import { Restaurants, RestaurantsProfile, RestaurantProfileImages, RestaurantProfileImageThumbs } from '../../../../../../../both/collections/restaurant/restaurant.collection';
+import { Restaurant, RestaurantProfile, RestaurantImage, RestaurantSchedule, RestaurantLocation, RestaurantSocialNetwork, RestaurantProfileImageThumb } from '../../../../../both/models/restaurant/restaurant.model';
+import { Restaurants, RestaurantsProfile, RestaurantProfileImages, RestaurantProfileImageThumbs } from '../../../../../both/collections/restaurant/restaurant.collection';
 import { uploadRestaurantProfileImages } from '../../../../../both/methods/restaurant/restaurant.methods';
 import { AlertConfirmComponent } from '../../../general/alert-confirm/alert-confirm.component';
 
